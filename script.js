@@ -16,6 +16,7 @@ let secretNumber = Math.trunc(Math.random() * 20) + 1;
 // document.querySelector('.number').textContent = secretNumber;
 //upon wron guess the score will decrese
 let score = 20; //state variable, contain data which relevant to this appliation
+let highscore = 0;
 // select button element and use addeventlistener method on that element to attach an eventhandler and this eventhandler is the function below
 document.querySelector('.check').addEventListener('click', function () {
   // console.log(document.querySelector('.guess').value); //log the value from the input field to the console
@@ -33,6 +34,10 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('.number').textContent = secretNumber;
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '30rem';
+    if (score > highscore) {
+      highscore = score;
+      document.querySelector('.highscore').textContent = highscore;
+    }
     //when gues is too high
   } else if (guess > secretNumber) {
     if (score > 1) {
