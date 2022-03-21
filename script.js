@@ -21,12 +21,17 @@ document.querySelector('.check').addEventListener('click', function () {
   // console.log(document.querySelector('.guess').value); //log the value from the input field to the console
   const guess = Number(document.querySelector('.guess').value);
   console.log(guess); //getting back a string usually always from the input field if we are not using the Number function
+  //when there is no input
   if (!guess) {
     document.querySelector('.message').textContent = '⛔ No number!';
   }
-  //comparing our guess ti the secret number
+  //comparing our guess to the secret number
+  //When the player win
   else if (guess === secretNumber) {
     document.querySelector('.message').textContent = '🎉 Correct number!';
+    document.querySelector('body').style.backgroundColor = '#60b347';
+    document.querySelector('.number').style.width = '30rem';
+    //when gues is too high
   } else if (guess > secretNumber) {
     if (score > 1) {
       document.querySelector('.message').textContent = '📈 Too high!';
@@ -36,6 +41,7 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.message').textContent = '🧨 You lost the game';
       document.querySelector('.score').textContent = 0;
     }
+    //when guess is too low
   } else if (guess < secretNumber) {
     if (score > 1) {
       document.querySelector('.message').textContent = '📉 Too low!';
