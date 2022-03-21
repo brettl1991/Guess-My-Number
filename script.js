@@ -11,11 +11,11 @@
 // console.log(document.querySelector('.guess').value); //with the input field we use the value to get the actual value of the property
 
 //define the secret number between 1 and 20 (cutting decimals with trunc and +1 allow to get back 20 as well)
-const secretNumber = Math.trunc(Math.random() * 20) + 1;
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
 //showing the secret number on the webpage, this is mainly for us
-document.querySelector('.number').textContent = secretNumber;
+// document.querySelector('.number').textContent = secretNumber;
 //upon wron guess the score will decrese
-let score = 20; //state variable, contain date which relevant to this appliation
+let score = 20; //state variable, contain data which relevant to this appliation
 // select button element and use addeventlistener method on that element to attach an eventhandler and this eventhandler is the function below
 document.querySelector('.check').addEventListener('click', function () {
   // console.log(document.querySelector('.guess').value); //log the value from the input field to the console
@@ -29,6 +29,8 @@ document.querySelector('.check').addEventListener('click', function () {
   //When the player win
   else if (guess === secretNumber) {
     document.querySelector('.message').textContent = '🎉 Correct number!';
+    //actually we want that just happen when the player guesses the correct number
+    document.querySelector('.number').textContent = secretNumber;
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '30rem';
     //when gues is too high
@@ -52,4 +54,16 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.score').textContent = 0;
     }
   }
+});
+
+//Coding challange
+document.querySelector('.again').addEventListener('click', function () {
+  score = 20;
+  secretNumber = Math.trunc(Math.random() * 20) + 1; //generates a new random number to not be the same as before
+  document.querySelector('.message').textContent = 'Start guessing ...';
+  document.querySelector('.score').textContent = score;
+  document.querySelector('.number').textContent = '?';
+  document.querySelector('.guess').value = '';
+  document.querySelector('body').style.backgroundColor = '#222';
+  document.querySelector('.number').style.width = '15rem';
 });
