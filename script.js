@@ -22,44 +22,44 @@ const displayMessage = function (message) {
   document.querySelector('.message').textContent = message;
 };
 // select button element and use addeventlistener method on that element to attach an eventhandler and this eventhandler is the function below
-document.querySelector('.check').addEventListener(
-  'click',
-  function () {
-    // console.log(document.querySelector('.guess').value); //log the value from the input field to the console
-    const guess = Number(document.querySelector('.guess').value);
-    console.log(guess); //getting back a string usually always from the input field if we are not using the Number function
-    //when there is no input
-    if (!guess) {
-      // document.querySelector('.message').textContent = '⛔ No number!';
-      displayMessage('⛔ No number!');
+document.querySelector('.check').addEventListener('click', function () {
+  // console.log(document.querySelector('.guess').value); //log the value from the input field to the console
+  const guess = Number(document.querySelector('.guess').value);
+  console.log(guess); //getting back a string usually always from the input field if we are not using the Number function
+  //when there is no input
+  if (!guess) {
+    // document.querySelector('.message').textContent = '⛔ No number!';
+    displayMessage('⛔ No number!');
+  }
+  //comparing our guess to the secret number
+  //When the player win
+  else if (guess === secretNumber) {
+    // document.querySelector('.message').textContent = '🎉 Correct number!';
+    displayMessage('🎉 Correct number!');
+    //actually we want that just happen when the player guesses the correct number
+    document.querySelector('.number').textContent = secretNumber;
+    document.querySelector('body').style.backgroundColor = '#60b347';
+    document.querySelector('.number').style.width = '30rem';
+    if (score > highscore) {
+      highscore = score;
+      document.querySelector('.highscore').textContent = highscore;
     }
-    //comparing our guess to the secret number
-    //When the player win
-    else if (guess === secretNumber) {
-      // document.querySelector('.message').textContent = '🎉 Correct number!';
-      displayMessage('🎉 Correct number!');
-      //actually we want that just happen when the player guesses the correct number
-      document.querySelector('.number').textContent = secretNumber;
-      document.querySelector('body').style.backgroundColor = '#60b347';
-      document.querySelector('.number').style.width = '30rem';
-      if (score > highscore) {
-        highscore = score;
-        document.querySelector('.highscore').textContent = highscore;
-      }
-    }
-    //when guess is wrong
-    else if (guess !== secretNumber) {
-      // if (score > 1) {
-      //   document.querySelector('.message').textContent =
-      //     guess > secretNumber ? '📈 Too high!' : '📉 Too low!';
-      displayMessage(guess > secretNumber ? '📈 Too high!' : '📉 Too low!');
-      score--; //score = score - 1;
-      document.querySelector('.score').textContent = score;
-    } else {
+  }
+  //when guess is wrong
+  else if (guess !== secretNumber) {
+    // if (score > 1) {
+    //   document.querySelector('.message').textContent =
+    //     guess > secretNumber ? '📈 Too high!' : '📉 Too low!';
+    displayMessage(guess > secretNumber ? '📈 Too high!' : '📉 Too low!');
+    score--; //score = score - 1;
+
+    if (score <= 0) {
       // document.querySelector('.message').textContent = '🧨 You lost the game';
       displayMessage('🧨 You lost the game');
+      score = 0;
       document.querySelector('.score').textContent = 0;
     }
+    document.querySelector('.score').textContent = score;
   }
   //   //when gues is too high
   // } else if (guess > secretNumber) {
@@ -81,7 +81,7 @@ document.querySelector('.check').addEventListener(
   //     document.querySelector('.message').textContent = '🧨 You lost the game';
   //     document.querySelector('.score').textContent = 0;
   //   }
-);
+});
 
 //Coding challange
 document.querySelector('.again').addEventListener('click', function () {
