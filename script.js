@@ -10,7 +10,7 @@
 // document.querySelector('.guess').value = 23;
 // console.log(document.querySelector('.guess').value); //with the input field we use the value to get the actual value of the property
 
-//define the secret number between 1 and 20 (cutting decimals with trunc and +1 allow to get back 20 as well)
+//define the secret number between 1 and 20 (cutting decimals with trunc and +1 allow us to get back 20 as well)
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 //showing the secret number on the webpage, this is mainly for us
 // document.querySelector('.number').textContent = secretNumber;
