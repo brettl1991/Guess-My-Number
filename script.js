@@ -14,7 +14,7 @@
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 //showing the secret number on the webpage, this is mainly for us
 // document.querySelector('.number').textContent = secretNumber;
-//upon wron guess the score will decrese
+//upon wrong guess the score will decrese
 let score = 20; //state variable, contain data which relevant to this appliation
 let highscore = 0;
 
